@@ -37,7 +37,7 @@
     "@rbxts/dumpster": "^1.0.8",
     "@rbxts/inspect": "^1.0.1",
     "@rbxts/player-statistics": "0.0.3-beta.6",
-    "@rbxts/reward-containers": "0.0.1-beta.2",
+    "@rbxts/reward-containers": "0.0.1-beta.3",
     "@rbxts/services": "^1.1.2",
     "@rbxts/signals-tooling": "^1.0.4"
   }
