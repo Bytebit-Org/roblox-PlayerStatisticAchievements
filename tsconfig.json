@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		// required
 		"allowSyntheticDefaultImports": true,
 		"downlevelIteration": true,
 		"jsx": "react",
@@ -12,9 +11,9 @@
 		"resolveJsonModule": true,
 		"strict": true,
 		"target": "ESNext",
-		"typeRoots": ["node_modules/@rbxts"],
-
-		// configurable
+		"typeRoots": [
+			"node_modules/@rbxts"
+		],
 		"rootDir": "src",
 		"outDir": "out",
 		"baseUrl": "src",

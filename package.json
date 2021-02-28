@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/player-statistic-achievements",
-  "version": "1.0.0",
+  "version": "0.0.1-beta.1",
   "description": "A generic, type-safe package for Roblox development made with roblox-ts for giving out rewards to players who achieve specified objectives based on their player statistics.",
   "main": "out/init.lua",
   "scripts": {
@@ -24,13 +24,21 @@
   "devDependencies": {
     "@rbxts/compiler-types": "^1.0.0-beta.15.1",
     "@rbxts/types": "^1.0.456",
-    "@typescript-eslint/eslint-plugin": "^4.15.2",
-    "@typescript-eslint/parser": "^4.15.2",
-    "eslint": "^7.21.0",
-    "eslint-config-prettier": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-roblox-ts": "0.0.24",
     "prettier": "^2.2.1",
     "typescript": "^4.2.2"
+  },
+  "dependencies": {
+    "@rbxts/dumpster": "^1.0.8",
+    "@rbxts/inspect": "^1.0.1",
+    "@rbxts/player-statistics": "0.0.3-beta.6",
+    "@rbxts/reward-containers": "0.0.1-beta.2",
+    "@rbxts/services": "^1.1.2",
+    "@rbxts/signals-tooling": "^1.0.4"
   }
 }
