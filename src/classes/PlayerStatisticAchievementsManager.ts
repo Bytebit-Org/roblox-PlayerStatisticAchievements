@@ -3,9 +3,11 @@ import { StatisticsDefinition, StatisticsSnapshot } from "@rbxts/player-statisti
 import { IPlayerStatisticsReader } from "@rbxts/player-statistics/out/interfaces/IPlayerStatisticsReader";
 import {
 	IRewardContainer,
+	IRewardGranter,
 	IRewardsOpeningCoordinator,
 	Reward,
 	StandardRewardContainer,
+	StandardRewardsOpeningCoordinator,
 } from "@rbxts/reward-containers";
 import { Players } from "@rbxts/services";
 import { ISignal } from "@rbxts/signals-tooling";
@@ -44,7 +46,11 @@ export class PlayerStatisticAchievementsManager<
 			IRewardContainer,
 			typeof StandardRewardContainer.create
 		>,
-		private readonly rewardsOpeningCoordinator: IRewardsOpeningCoordinator,
+		private readonly rewardGrantersByRewardType: ReadonlyMap<string, IRewardGranter>,
+		private readonly rewardsOpeningCoordinatorFactory: GenericFactory<
+			IRewardsOpeningCoordinator,
+			typeof StandardRewardsOpeningCoordinator.create
+		>,
 		private readonly playerStatisticsReader: IPlayerStatisticsReader<StatsDef>,
 		signalFactory: SignalFactory,
 	) {
@@ -68,7 +74,7 @@ export class PlayerStatisticAchievementsManager<
 	public static create<StatsDef extends StatisticsDefinition, AchvmtsDef extends AchievementsDefinition<StatsDef>>(
 		this: void,
 		achievementsDefinition: AchvmtsDef,
-		rewardsOpeningCoordinator: IRewardsOpeningCoordinator,
+		rewardGrantersByRewardType: ReadonlyMap<string, IRewardGranter>,
 		playerStatisticsReader: IPlayerStatisticsReader<StatsDef>,
 	): IPlayerStatisticAchievementsManager<StatsDef, AchvmtsDef> {
 		return new PlayerStatisticAchievementsManager(
@@ -76,7 +82,8 @@ export class PlayerStatisticAchievementsManager<
 			DumpsterFactoryInstance,
 			Players,
 			new GenericFactory(StandardRewardContainer.create),
-			rewardsOpeningCoordinator,
+			rewardGrantersByRewardType,
+			new GenericFactory(StandardRewardsOpeningCoordinator.create),
 			playerStatisticsReader,
 			new SignalFactory(),
 		);
@@ -137,9 +144,14 @@ export class PlayerStatisticAchievementsManager<
 								completedAchievementNamesForPlayer.add(achievementName);
 								this.achievementCompleted.fire(player, achievementName);
 
+								const rewardsOpeningCoordinator = this.rewardsOpeningCoordinatorFactory.createInstance(
+									achievementDescription.rewardsSelector,
+									this.rewardGrantersByRewardType,
+								);
+
 								const rewardContainer = this.rewardContainerFactory.createInstance(
 									player,
-									this.rewardsOpeningCoordinator,
+									rewardsOpeningCoordinator,
 								);
 
 								const rewardContainerOpenedConnection = rewardContainer.opened.Connect((rewards) => {
