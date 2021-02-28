@@ -1,6 +1,9 @@
 import { StatisticsDefinition, StatisticsSnapshot } from "@rbxts/player-statistics";
 import { IRewardsSelector } from "@rbxts/reward-containers";
 
+/**
+ * Describes a single statistics-based achievement
+ */
 export type AchievementDescription<StatsDef extends StatisticsDefinition> = {
 	/**
 	 * Given a snapshot of a player's statistics, should return a number in the range [0, 1]

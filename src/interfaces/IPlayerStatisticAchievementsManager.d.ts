@@ -4,6 +4,9 @@ import { Reward } from "@rbxts/reward-containers";
 import { IReadOnlySignal } from "@rbxts/signals-tooling";
 import { AchievementsDefinition } from "types/AchievementsDefinition";
 
+/**
+ * Provides the interface for a player statistic achievements manager
+ */
 export interface IPlayerStatisticAchievementsManager<
 	StatsDef extends StatisticsDefinition,
 	AchvmtsDef extends AchievementsDefinition<StatsDef>

@@ -25,6 +25,11 @@ function getClampedProgress<StatsDef extends StatisticsDefinition>(
 	return math.clamp(achievementDescription.getProgress(statisticsSnapshot), 0, 1);
 }
 
+/**
+ * The standard player statistic achievements manager.
+ * This manager will handle listening for statistics to load for each player and cleaning up when players leave.
+ * Its main purpose, though, is to listen for each player to complete an achievement and then grant them the associated rewards.
+ */
 export class PlayerStatisticAchievementsManager<
 	StatsDef extends StatisticsDefinition,
 	AchvmtsDef extends AchievementsDefinition<StatsDef>
@@ -38,6 +43,9 @@ export class PlayerStatisticAchievementsManager<
 	private readonly dumpster: Dumpster;
 	private isDestroyed: boolean;
 
+	/**
+	 * Use the create method instead
+	 */
 	private constructor(
 		private readonly achievementsDefinition: AchvmtsDef,
 		dumpsterFactory: DumpsterFactory,
@@ -71,6 +79,13 @@ export class PlayerStatisticAchievementsManager<
 		this.listenForPlayersToLeave();
 	}
 
+	/**
+	 * Creates a new instance
+	 * @param this
+	 * @param achievementsDefinition The definition of achievements.
+	 * @param rewardGrantersByRewardType The reward granters keyed by the reward type they grant.
+	 * @param playerStatisticsReader The player statistics reader to use for listening to statistics updates and monitoring for completed achievements.
+	 */
 	public static create<StatsDef extends StatisticsDefinition, AchvmtsDef extends AchievementsDefinition<StatsDef>>(
 		this: void,
 		achievementsDefinition: AchvmtsDef,
