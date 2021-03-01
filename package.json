@@ -1,10 +1,13 @@
 {
   "name": "@rbxts/player-statistic-achievements",
-  "version": "0.0.1-beta.3",
+  "version": "0.0.1-beta.4",
   "description": "A generic, type-safe package for Roblox development made with roblox-ts for giving out rewards to players who achieve specified objectives based on their player statistics.",
   "main": "out/init.lua",
   "scripts": {
-    "prepublishOnly": "rbxtsc"
+    "eslint": "npx eslint \"src/**/*.ts\" --max-warnings 0",
+    "prepublishOnly": "rm -rf ./out; rbxtsc",
+    "test": "rbxtsc --type=game && rojo build -o ./unit_tests.rbxlx && run-in-roblox ./unit_tests.rbxlx -s ./spec.server.lua",
+    "wsl-start-unit-tests": "set -e; rm -rf ./out; rbxtsc --type=game && rojo build -o unit_tests.rbxlx; ./scripts/open-in-windows ./unit_tests.rbxlx"
   },
   "repository": {
     "type": "git",
@@ -35,10 +38,12 @@
   },
   "dependencies": {
     "@rbxts/dumpster": "^1.0.8",
+    "@rbxts/fitumi": "^1.0.7",
     "@rbxts/inspect": "^1.0.1",
     "@rbxts/player-statistics": "0.0.3-beta.6",
     "@rbxts/reward-containers": "0.0.1-beta.3",
     "@rbxts/services": "^1.1.2",
-    "@rbxts/signals-tooling": "^1.0.4"
+    "@rbxts/signals-tooling": "^1.0.4",
+    "@rbxts/testez": "^0.3.1-ts.6"
   }
 }
