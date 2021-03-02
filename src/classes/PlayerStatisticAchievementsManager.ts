@@ -2,11 +2,9 @@ import { Dumpster } from "@rbxts/dumpster";
 import { StatisticsDefinition, StatisticsSnapshot } from "@rbxts/player-statistics";
 import { IPlayerStatisticsReader } from "@rbxts/player-statistics/out/interfaces/IPlayerStatisticsReader";
 import {
-	IRewardContainer,
 	IRewardGranter,
 	IRewardsOpeningCoordinator,
 	Reward,
-	StandardRewardContainer,
 	StandardRewardsOpeningCoordinator,
 } from "@rbxts/reward-containers";
 import { Players } from "@rbxts/services";
@@ -45,15 +43,12 @@ export class PlayerStatisticAchievementsManager<
 
 	/**
 	 * Use the create method instead
+	 * Set to protected only for unit testing
 	 */
-	private constructor(
+	protected constructor(
 		private readonly achievementsDefinition: AchvmtsDef,
 		dumpsterFactory: DumpsterFactory,
 		private readonly playersService: Players,
-		private readonly rewardContainerFactory: GenericFactory<
-			IRewardContainer,
-			typeof StandardRewardContainer.create
-		>,
 		private readonly rewardGrantersByRewardType: ReadonlyMap<string, IRewardGranter>,
 		private readonly rewardsOpeningCoordinatorFactory: GenericFactory<
 			IRewardsOpeningCoordinator,
@@ -96,7 +91,6 @@ export class PlayerStatisticAchievementsManager<
 			achievementsDefinition,
 			DumpsterFactoryInstance,
 			Players,
-			new GenericFactory(StandardRewardContainer.create),
 			rewardGrantersByRewardType,
 			new GenericFactory(StandardRewardsOpeningCoordinator.create),
 			playerStatisticsReader,
@@ -133,52 +127,40 @@ export class PlayerStatisticAchievementsManager<
 		for (const [achievementName, achievementDescription] of pairs(this.achievementsDefinition)) {
 			for (const statisticName of achievementDescription.relevantStatisticNames) {
 				this.dumpster.dump(
-					this.playerStatisticsReader.subscribeToStatisticUpdates(
-						statisticName,
-						(player, newValue, oldValue) => {
-							const completedAchievementNamesForPlayer = this.completedAchievementNamesByPlayer.get(
-								player,
+					this.playerStatisticsReader.subscribeToStatisticUpdates(statisticName, (player) => {
+						const completedAchievementNamesForPlayer = this.completedAchievementNamesByPlayer.get(player);
+						if (completedAchievementNamesForPlayer === undefined) {
+							warn(
+								`Player ${player.Name} has updated statistic "${statisticName}" but their achievements are not yet ready for processing`,
 							);
-							if (completedAchievementNamesForPlayer === undefined) {
-								warn(
-									`Player ${player.Name} has updated statistic "${statisticName}" but their achievements are not yet ready for processing`,
-								);
-								return;
-							}
+							return;
+						}
 
-							if (completedAchievementNamesForPlayer.has(achievementName)) {
-								return;
-							}
+						if (completedAchievementNamesForPlayer.has(achievementName)) {
+							return;
+						}
 
-							const statisticsSnapshotForPlayer = this.playerStatisticsReader.getStatisticsSnapshotForPlayer(
-								player,
+						const statisticsSnapshotForPlayer = this.playerStatisticsReader.getStatisticsSnapshotForPlayer(
+							player,
+						);
+
+						const progress = getClampedProgress(achievementDescription, statisticsSnapshotForPlayer);
+						if (progress === 1) {
+							completedAchievementNamesForPlayer.add(achievementName);
+							this.achievementCompleted.fire(player, achievementName);
+
+							const rewardsOpeningCoordinator = this.rewardsOpeningCoordinatorFactory.createInstance(
+								achievementDescription.rewardsSelector,
+								this.rewardGrantersByRewardType,
 							);
 
-							const progress = getClampedProgress(achievementDescription, statisticsSnapshotForPlayer);
-							if (progress === 1) {
-								completedAchievementNamesForPlayer.add(achievementName);
-								this.achievementCompleted.fire(player, achievementName);
-
-								const rewardsOpeningCoordinator = this.rewardsOpeningCoordinatorFactory.createInstance(
-									achievementDescription.rewardsSelector,
-									this.rewardGrantersByRewardType,
+							rewardsOpeningCoordinator
+								.coordinateOpeningAsync(player)
+								.then((rewards) =>
+									this.achievementRewardGranted.fire(player, achievementName, rewards),
 								);
-
-								const rewardContainer = this.rewardContainerFactory.createInstance(
-									player,
-									rewardsOpeningCoordinator,
-								);
-
-								const rewardContainerOpenedConnection = rewardContainer.opened.Connect((rewards) => {
-									rewardContainerOpenedConnection.Disconnect();
-
-									this.achievementRewardGranted.fire(player, achievementName, rewards);
-								});
-
-								rewardContainer.openAsync();
-							}
-						},
-					),
+						}
+					}),
 				);
 			}
 		}
