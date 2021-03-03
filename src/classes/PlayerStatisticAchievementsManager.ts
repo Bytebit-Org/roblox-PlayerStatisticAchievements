@@ -42,6 +42,7 @@ export class PlayerStatisticAchievementsManager<
 	private isDestroyed: boolean;
 
 	/**
+	 * @hidden
 	 * Use the create method instead
 	 * Set to protected only for unit testing
 	 */
