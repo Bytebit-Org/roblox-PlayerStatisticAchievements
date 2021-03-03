@@ -38,14 +38,16 @@
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-roblox-ts": "0.0.24",
     "prettier": "^2.2.1",
-    "typescript": "^4.2.2"
+    "typedoc": "^0.20.28",
+    "typedoc-plugin-markdown": "^3.6.0",
+    "typescript": "^4.1.5"
   },
   "dependencies": {
     "@rbxts/dumpster": "^1.0.8",
     "@rbxts/fitumi": "^1.0.7",
     "@rbxts/inspect": "^1.0.1",
-    "@rbxts/player-statistics": "0.0.3-beta.6",
-    "@rbxts/reward-containers": "0.0.1-beta.3",
+    "@rbxts/player-statistics": "^1.0.1",
+    "@rbxts/reward-containers": "0.0.1-beta.9",
     "@rbxts/services": "^1.1.2",
     "@rbxts/signals-tooling": "^1.0.4",
     "@rbxts/testez": "^0.3.1-ts.6"
