@@ -45,7 +45,7 @@ Fired when an achievement is completed by a player
 
 **`argument`** achievementName The name of the achievement that the player completed
 
-Defined in: [src/interfaces/IPlayerStatisticAchievementsManager.d.ts:19](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/aa801df/src/interfaces/IPlayerStatisticAchievementsManager.d.ts#L19)
+Defined in: [src/interfaces/IPlayerStatisticAchievementsManager.d.ts:19](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/5b14169/src/interfaces/IPlayerStatisticAchievementsManager.d.ts#L19)
 
 ___
 
@@ -61,7 +61,7 @@ Fired when an achievement is completed by a player and their reward has finished
 
 **`argument`** rewards The rewards that were granted to the player
 
-Defined in: [src/interfaces/IPlayerStatisticAchievementsManager.d.ts:27](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/aa801df/src/interfaces/IPlayerStatisticAchievementsManager.d.ts#L27)
+Defined in: [src/interfaces/IPlayerStatisticAchievementsManager.d.ts:27](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/5b14169/src/interfaces/IPlayerStatisticAchievementsManager.d.ts#L27)
 
 ## Methods
 
@@ -93,4 +93,4 @@ Name | Type | Description |
 
 **Returns:** *number*
 
-Defined in: [src/interfaces/IPlayerStatisticAchievementsManager.d.ts:37](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/aa801df/src/interfaces/IPlayerStatisticAchievementsManager.d.ts#L37)
+Defined in: [src/interfaces/IPlayerStatisticAchievementsManager.d.ts:37](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/5b14169/src/interfaces/IPlayerStatisticAchievementsManager.d.ts#L37)

@@ -40,7 +40,7 @@ Fired when an achievement is completed by a player
 
 Implementation of: [IPlayerStatisticAchievementsManager](../interfaces/iplayerstatisticachievementsmanager.md).[achievementCompleted](../interfaces/iplayerstatisticachievementsmanager.md#achievementcompleted)
 
-Defined in: [src/classes/PlayerStatisticAchievementsManager.ts:35](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/aa801df/src/classes/PlayerStatisticAchievementsManager.ts#L35)
+Defined in: [src/classes/PlayerStatisticAchievementsManager.ts:35](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/5b14169/src/classes/PlayerStatisticAchievementsManager.ts#L35)
 
 ___
 
@@ -52,7 +52,7 @@ Fired when an achievement is completed by a player and their reward has finished
 
 Implementation of: [IPlayerStatisticAchievementsManager](../interfaces/iplayerstatisticachievementsmanager.md).[achievementRewardGranted](../interfaces/iplayerstatisticachievementsmanager.md#achievementrewardgranted)
 
-Defined in: [src/classes/PlayerStatisticAchievementsManager.ts:36](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/aa801df/src/classes/PlayerStatisticAchievementsManager.ts#L36)
+Defined in: [src/classes/PlayerStatisticAchievementsManager.ts:36](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/5b14169/src/classes/PlayerStatisticAchievementsManager.ts#L36)
 
 ## Methods
 
@@ -66,7 +66,7 @@ Clean up everything
 
 Implementation of: [IPlayerStatisticAchievementsManager](../interfaces/iplayerstatisticachievementsmanager.md)
 
-Defined in: [src/classes/PlayerStatisticAchievementsManager.ts:102](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/aa801df/src/classes/PlayerStatisticAchievementsManager.ts#L102)
+Defined in: [src/classes/PlayerStatisticAchievementsManager.ts:102](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/5b14169/src/classes/PlayerStatisticAchievementsManager.ts#L102)
 
 ___
 
@@ -83,7 +83,7 @@ Name | Type |
 
 **Returns:** *number*
 
-Defined in: [src/classes/PlayerStatisticAchievementsManager.ts:112](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/aa801df/src/classes/PlayerStatisticAchievementsManager.ts#L112)
+Defined in: [src/classes/PlayerStatisticAchievementsManager.ts:112](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/5b14169/src/classes/PlayerStatisticAchievementsManager.ts#L112)
 
 ___
 
@@ -110,4 +110,4 @@ Name | Type | Description |
 
 **Returns:** [*IPlayerStatisticAchievementsManager*](../interfaces/iplayerstatisticachievementsmanager.md)<StatsDef, AchvmtsDef\>
 
-Defined in: [src/classes/PlayerStatisticAchievementsManager.ts:85](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/aa801df/src/classes/PlayerStatisticAchievementsManager.ts#L85)
+Defined in: [src/classes/PlayerStatisticAchievementsManager.ts:85](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/5b14169/src/classes/PlayerStatisticAchievementsManager.ts#L85)

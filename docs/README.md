@@ -39,7 +39,7 @@ Name | Type | Description |
 `relevantStatisticNames` | *ReadonlyArray*<keyof StatsDef\> | The list of statistic names that will cause this AchievementDescription to be checked for completion when they are updated for any given player.   |
 `rewardsSelector` | IRewardsSelector | A rewards selector for giving out a specific reward to a player upon completing the achievement.   |
 
-Defined in: [src/types/AchievementDescription.d.ts:7](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/aa801df/src/types/AchievementDescription.d.ts#L7)
+Defined in: [src/types/AchievementDescription.d.ts:7](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/5b14169/src/types/AchievementDescription.d.ts#L7)
 
 ___
 
@@ -57,4 +57,4 @@ Name | Type |
 
 #### Type declaration:
 
-Defined in: [src/types/AchievementsDefinition.d.ts:7](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/aa801df/src/types/AchievementsDefinition.d.ts#L7)
+Defined in: [src/types/AchievementsDefinition.d.ts:7](https://github.com/Bytebit-Org/roblox-PlayerStatisticAchievements/blob/5b14169/src/types/AchievementsDefinition.d.ts#L7)
