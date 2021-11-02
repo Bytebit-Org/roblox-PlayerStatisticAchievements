@@ -1,0 +1,9 @@
+[package]
+name = "bytebit/server-networked-values"
+description = "A library for networking persistent values from the server to the client for Roblox development written using roblox-ts."
+version = "1.0.1"
+license = "MIT"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
