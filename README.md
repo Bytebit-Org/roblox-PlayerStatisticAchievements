@@ -27,7 +27,7 @@ npm i @rbxts/player-statistic-achievements
 ### Wally
 [Wally](https://github.com/UpliftGames/wally/) users can install this package by adding the following line to their `Wally.toml` under `[dependencies]`:
 ```
-FiniteStateMachine = "bytebit/player-statistic-achievements@1.0.2"
+PlayerStatisticAchievements = "bytebit/player-statistic-achievements@1.0.2"
 ```
 
 Then just run `wally install`.
