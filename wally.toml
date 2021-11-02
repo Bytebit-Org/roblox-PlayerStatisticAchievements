@@ -1,7 +1,7 @@
 [package]
 name = "bytebit/server-networked-values"
-description = "A library for networking persistent values from the server to the client for Roblox development written using roblox-ts."
-version = "1.0.1"
+description = "A generic, type-safe package for Roblox development made with roblox-ts for giving out rewards to players who achieve specified objectives based on their player statistics."
+version = "1.0.2"
 license = "MIT"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"

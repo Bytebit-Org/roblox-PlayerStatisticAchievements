@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/player-statistic-achievements",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A generic, type-safe package for Roblox development made with roblox-ts for giving out rewards to players who achieve specified objectives based on their player statistics.",
   "main": "out/init.lua",
   "scripts": {
